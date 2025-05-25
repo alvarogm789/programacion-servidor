@@ -1,0 +1,17 @@
+[
+    {
+        "nombre":"Jose",
+        "telefono":3523543,
+        "direccion":"villa Cartagena"
+    },
+    {
+        "nombre":"Andres",
+        "telefono":4364544,
+        "direccion":"asuncion Cartagena"
+    },
+    {
+        "nombre":"Andrea",
+        "telefono":36576878,
+        "direccion":"barrio n Cartagena"
+    }
+]
