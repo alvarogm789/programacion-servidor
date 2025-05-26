@@ -49,7 +49,7 @@ async function getServicio(req, res) {
     if (_id) filter._id = _id;
 
     const response = await Servicio.find(filter);
-    return res.status(200).send(response); // ✅ Esto devuelve un array directo
+    return res.status(200).send(response); //esto devuelve un array directo
   } catch (error) {
     console.error("Error en getServicios:", error);
     return res.status(503).send({ msg: `Error al ejecutar getServicios: ${error}`, status: false });

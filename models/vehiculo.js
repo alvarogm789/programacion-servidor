@@ -2,23 +2,24 @@ const mongoose = require("mongoose");
 
 const vehiculoSchema = new mongoose.Schema({
 
-    idVehiculo: {
-      type: String,
-      required: false
-    },
+    // idVehiculo: {
+    //   type: String,
+    //   required: false
+    // },
     placaVehiculo: {
         type: String,
         required: false
       },
-    color: {
+    conductorAsignado: { //luego se va a agregar a un servicio
         type: String,
         required: false
-      },
+    },
 
-    placaVehiculoAsignado: {
-      type: String,
+    estado: { //puede ser (0)=Disponible o (1)=No Disponible ===> "En mantenimiento, varado o inactivo por otro problema", 
+      type: Number,
       required: false
     }
+
     // conductorDeVehiculo: { //si tiene conductor asignado
     //   type: Date,
     //   required: false
