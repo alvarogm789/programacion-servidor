@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const servicioSchema = new mongoose.Schema({
 
-    idServicio: { //de quien es el servicio
+    cliente: { //de quien es el servicio
       type: String,
       required: false
     },

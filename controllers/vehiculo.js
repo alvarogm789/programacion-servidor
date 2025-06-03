@@ -59,6 +59,26 @@ async function getVehiculo(req, res) {
 // };
 
 
+const mongoose = require('mongoose');
+
+async function deleteVehiculo(req, res) {
+    const id = req.params.id;
+
+    if (!id) return res.status(403).send("Id Requerido");
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send("Id inválido");
+
+    try {
+        const result = await Vehiculo.findByIdAndDelete(id);
+
+        if (!result) return res.status(404).send("Registro de Vehiculo no encontrado");
+        return res.status(200).send(`Se ha eliminado exitosamente el registro con ID ${id} `);
+    } catch (err) {
+        res.status(500).send(err.message);
+        console.log("//        ¡Ocurrio un error en metodo deleteVehiculo!        //");
+    }
+}
+
+
 
 // async function updateVehiculo(req, res) {
 //   try {
@@ -85,9 +105,35 @@ async function getVehiculo(req, res) {
 //   }
 // }
 
+
+
+// opcion 2 de actualizar vehiculo
+async function updateVehiculo(req, res) {
+  try {
+    const { _id, update } = req.body;
+    if (!_id) return res.status(400).send({ msg: "Id de Vehiculo requerido", status: false });
+
+    // Validar que el estado solo pueda ser 0 o 1
+    if (update.estado !== undefined && ![0, 1].includes(update.estado)) {
+      return res.status(400).send({ msg: "Estado no válido, debe ser 0 (Disponible) o 1 (No Disponible)", status: false });
+    }
+
+    const response = await Vehiculo.findByIdAndUpdate(_id, { $set: update }, { new: true });
+    if (!response) {
+      return res.status(404).send({ msg: "Documento no encontrado", status: false });
+    }
+
+    return res.status(200).send({ msg: "Actualización exitosa en el Vehiculo", status: true, data: response });
+
+  } catch (error) {
+    console.error("Error al actualizar el Vehiculo:", error);
+    return res.status(500).send({ msg: "Error al actualizar", status: false });
+  }
+}
+
 module.exports = {
     postVehiculo,
     getVehiculo,
-    // deleteServicio,
-    // updateServicio
+    deleteVehiculo,
+    updateVehiculo
 }

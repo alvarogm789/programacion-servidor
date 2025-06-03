@@ -19,27 +19,6 @@ async function postServicio(req, res) {
 }
 
 
-// async function getServicio(req, res) { //traer todos los servicios
-//     try {
-//       const { idServicio, _id } = req.query;
-  
-//       //filtro
-//       const filter = {};
-//       if (idServicio) filter.idServicio = idServicio;
-//       if (_id) filter._id = _id;
-  
-  
-//       const response = await Servicio.find(filter);
-  
-  
-//       // Responde con los documentos encontrados
-//       return res.status(200).send({ msg: response, status: true });
-//     } catch (error) {
-//       console.error("Error en getServicios:", error);
-//       return res.status(503).send({ msg: `Error al ejecutar getServicios: ${error}`, status: false });
-//     }
-//   }
-
 
 async function getServicio(req, res) {
   try {
@@ -59,11 +38,8 @@ async function getServicio(req, res) {
 
 
 
-
-
-
-async function deleteServicio( req, res) {
-    const id = req.body.id;
+async function deleteServicio(req, res) {
+    const id = req.params.id; // <-- ahora viene de los params
 
     if (!id) return res.status(403).send("Id Requerido");
     
@@ -76,8 +52,7 @@ async function deleteServicio( req, res) {
         res.status(500).send(err.message);
         console.log("//        ¡Ocurrio un error en metodo deleteServicio!        //");
     }
-};
-
+}
 
 
 async function updateServicio(req, res) {
