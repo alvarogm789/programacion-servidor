@@ -22,11 +22,6 @@ const servicioSchema = new mongoose.Schema({
       type: Date,
       required: false
     },
-  
-    // descripcionServicio: {
-    //     type: String,
-    //     required: true,
-    // },
     // fechaCreacion: {
     //   type: Date,
     //   required: true,

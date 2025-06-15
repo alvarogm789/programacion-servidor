@@ -10,20 +10,35 @@ const vehiculoSchema = new mongoose.Schema({
         type: String,
         required: false
       },
+    tipo: { //luego se va a agregar a un servicio
+        type: String,
+        required: false
+    },
+    vehiculo: { //luego se va a agregar a un servicio
+        type: String,
+        required: false
+    },
+    capacidad: { //luego se va a agregar a un servicio
+        type: String,
+        required: false
+    },
+    relacion: {
+        type: String,
+        required: false
+    },
     conductorAsignado: { //luego se va a agregar a un servicio
         type: String,
         required: false
     },
+
+
+
 
     estado: { //puede ser (0)=Disponible o (1)=No Disponible ===> "En mantenimiento, varado o inactivo por otro problema", 
       type: Number,
       required: false
     }
 
-    // conductorDeVehiculo: { //si tiene conductor asignado
-    //   type: Date,
-    //   required: false
-    // },
 });
 
 module.exports = mongoose.model("Vehiculo", vehiculoSchema);
