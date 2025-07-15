@@ -26,11 +26,14 @@ const vehiculoSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    conductorAsignado: { //luego se va a agregar a un servicio
-        type: String,
-        required: false
+    // conductorAsignado: { //luego se va a agregar a un servicio / esto puede ser una lista de conductores
+    //     type: String,
+    //     required: false
+    // },
+    conductores: {
+        type: [String], // <- debe ser un arreglo de strings
+        default: []
     },
-
 
 
 

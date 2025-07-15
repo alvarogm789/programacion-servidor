@@ -22,6 +22,12 @@ const servicioSchema = new mongoose.Schema({
       type: Date,
       required: false
     },
+
+
+    valorServicio: {
+      type: Number,
+      required: false
+    },
     // fechaCreacion: {
     //   type: Date,
     //   required: true,
